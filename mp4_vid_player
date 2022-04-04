@@ -1,0 +1,8 @@
+#!/bin/bash
+# Author: Kamlesh Pal
+# Description: This script play selected mp4 file in current directory
+#              by sorting the files by file name (considering numbers).
+
+video=$(ls *.mp4 | sort -n | dmenu -l 10)
+mpv --fs $video
+

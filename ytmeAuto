@@ -1,0 +1,29 @@
+#!/bin/bash
+##Created Date:28/01/22
+##Written by  : Kamlesh-Pal and bugswriter
+
+##Accepting user search string, and replacing spaces with '+'.
+query=$(echo "" | dmenu -p "Search?" | sed 's/ /+/g')
+
+##Selecting first video id from "vid.puffyan.us" site and converting that id into youtube url.
+yturl="https://youtube.com/$(curl -s https://vid.puffyan.us/search?q=$query | grep -Eo "watch\?v=.{11}" | head -n 1)"
+
+##Menu to select fromat and filtering out the fromat number.
+format=18
+
+##Automaticaly select bet format,Useful if there is no limit on internet.
+#format=$(yt-dlp -F $yturl | grep best | awk '{print $1}')
+
+##To give option to download or strem the video
+
+case "$1" in
+
+	"d")
+		clear
+		yt-dlp -P /home/manjaro/Videos -f $format $yturl
+		;;
+	"p")
+		mpv --ytdl-format=$format $yturl
+		;;
+esac
+

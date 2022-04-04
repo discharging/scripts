@@ -1,0 +1,17 @@
+#!/bin/bash
+# Author: Kamlesh Pal
+# Description: Script to easy the process of connecting devices using
+#	       kdeconnect-cli.
+
+#Getting device id
+id=$(kdeconnect-cli -l | dmenu -nb black -nf red -sb red -l 5 | awk '{print $3}')
+
+kdeconnect-cli -d $id --pair
+
+if [ $? -eq 0 ]
+then
+	notify-send "Pair requested"
+else
+	notify-send "Device pairing un-succesful"
+fi
+

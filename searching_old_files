@@ -1,0 +1,9 @@
+#!/bin/bash
+# Author: Imaran Afzal
+# Discription: getting old files
+
+# This command will do long listing of files older than 90 days.
+find /home/manjaro/scripts -mtime +90  -exec ls -l {} \;
+
+# This command will rename old file with '.old' extension.
+# find /home/manjaro/scripts -mtime +90 -exec mv {} {}.old \;
