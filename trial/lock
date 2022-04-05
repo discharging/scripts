@@ -1,0 +1,11 @@
+#!/bin/bash
+# Author: Kamlesh_Pal
+
+scrot '/home/manjaro/trial/lock_wall.png'  -zo
+
+convert '/home/manjaro/trial/lock_wall.png' -blur 0x8 ~/trial/blured_file.png
+
+#rm ~/script/lock_wall.png
+
+i3lock -i ~/trial/blured_file.png
+
